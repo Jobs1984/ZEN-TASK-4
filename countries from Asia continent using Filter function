@@ -1,0 +1,24 @@
+var request = new XMLHttpRequest();
+
+
+// open the request
+request.open('GET', 'https://restcountries.eu/rest/v2/all', true);
+
+//send the request
+request.send();
+
+//load the response
+request.onload = function () {
+    var data = JSON.parse(this.response);
+    var arr=[];
+    var filtered= data.filter(item=>item["region"]=="Asia");
+    for(i=0;i<filtered.length;i++)
+    {
+        arr.push(filtered[i]["name"]);
+    }
+    console.log(arr);
+    
+}
+    
+//output
+(50) ["Afghanistan", "Armenia", "Azerbaijan", "Bahrain", "Bangladesh", "Bhutan", "Brunei Darussalam", "Cambodia", "China", "Georgia", "Hong Kong", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Israel", "Japan", "Jordan", "Kazakhstan", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Lebanon", "Macao", "Malaysia", "Maldives", "Mongolia", "Myanmar", "Nepal", "Korea (Democratic People's Republic of)", "Oman", "Pakistan", "Palestine, State of", "Philippines", "Qatar", "Saudi Arabia", "Singapore", "Korea (Republic of)", "Sri Lanka", "Syrian Arab Republic", "Taiwan", "Tajikistan", "Thailand", "Timor-Leste", "Turkey", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Viet Nam", "Yemen"]
