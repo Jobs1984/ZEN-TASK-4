@@ -1,0 +1,17 @@
+// creating request variale
+ var request= new XMLHttpRequest;
+
+ // opening XMLHTTP request
+request.open('GET','https://restcountries.eu/rest/v2/all','true');
+
+//sending the request
+request.send();
+
+//loading the response
+request.onload=function()
+{
+    var data= JSON.parse(this.response);
+
+    var filtered = data.filter(item => ( (item["currencies"][0]["symbol"]) == "$"));
+    filtered.forEach(item1=>console.log(item1["name"]));
+}
