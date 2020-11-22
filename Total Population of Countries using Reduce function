@@ -1,0 +1,20 @@
+var request = new XMLHttpRequest();
+
+
+// open the request
+request.open('GET', 'https://restcountries.eu/rest/v2/all', true);
+
+//send the request
+request.send();
+
+//load the response
+request.onload = function () {
+    var data = JSON.parse(this.response);
+    
+
+    var reduced = (sum, item) => sum + item["population"];
+    console.log(data.reduce(reduced, 0));
+}
+
+//output
+7349137231
